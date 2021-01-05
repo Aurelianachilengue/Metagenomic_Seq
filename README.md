@@ -1,13 +1,16 @@
-# __Metagenomic_Seq__
+# __MetagenomicSeq__
 _Statistical analysis for sparse high-throughput sequencing_
 
-Broadly speaking, metagenomics, also known as community genomics, is the genetic analysis of microbial communities contained in natural living environments.
+Broadly speaking, metagenomics is the genetic analysis of microbial communities contained in natural living environments. The metagenomic studies, is focused on understanding the differences in microbial communities caused by phenotypic differences.
 
-Originally focused on exploratory and validation projects, these studies now focus on understanding the differences in microbial communities caused by phenotypic differences.
 
-The key pint of Metagenomic_Seq package, is implementation of methods to account for previously unaddressed biases specific to high-throughput sequencing microbial marker-gene survey data
+The key point of Metagenomic_Seq package, is implementation of methods to account for previously unaddressed biases specific to high-throughput sequencing microbial marker-gene survey data.
 
-The Data analyzed in this portfolio was obtained on 
+![Overview of MetagenomicSeq](user/Desktop/Metagenomic_Seq/img.png)
+
+
+The Data analyzed in this portfolio was obtained on `Bioconducter: MetagenomicSeq Package` in this [link](http://www.bioconductor.org/packages/release/bioc/html/metagenomeSeq.html).
+
 
 ```{r}
 library(metagenomeSeq)
