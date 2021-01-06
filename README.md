@@ -6,7 +6,7 @@ Broadly speaking, metagenomics is the genetic analysis of microbial communities 
 
 The key point of Metagenomic_Seq package, is implementation of methods to account for previously unaddressed biases specific to high-throughput sequencing microbial marker-gene survey data.
 
-![Overview of MetagenomicSeq](user/Desktop/Metagenomic_Seq/img.png)
+![Overview MetagenomeSeq](https://raw.githubusercontent.com/Aurelianachilengue/Metagenomic_Seq/main/MetagenomicSeq.PNG)
 
 
 The Data analyzed in this portfolio was obtained on `Bioconducter: MetagenomicSeq Package` in this [link](http://www.bioconductor.org/packages/release/bioc/html/metagenomeSeq.html).
