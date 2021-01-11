@@ -9,11 +9,10 @@ The key point of MetagenomeSeq package, is implementation of methods to account 
 ![Overview MetagenomeSeq](https://raw.githubusercontent.com/Aurelianachilengue/Metagenomic_Seq/main/MetagenomicSeq.PNG)
 
 
-<<<<<<< HEAD
+
 The Data analyzed in this portfolio was obtained on `Bioconducter: MetagenomicSeq Package` on this [Page](http://www.bioconductor.org/packages/release/bioc/html/metagenomeSeq.html).
-=======
+
 The Data analyzed in this portfolio was obtained on `Bioconducter: MetagenomeSeq Package` in this [link](http://www.bioconductor.org/packages/release/bioc/html/metagenomeSeq.html).
->>>>>>> 52430ecd33cd00e073c6070c824a4b811d2c63c9
 
 
 ```{r}
@@ -37,7 +36,4 @@ biom_file <- system.file("extdata", "min_sparse_otu_table.biom", package = "biom
 b <- read_biom(biom_file)
 biom2MRexperiment(b)
 ```
-<<<<<<< HEAD
 
-=======
->>>>>>> 52430ecd33cd00e073c6070c824a4b811d2c63c9
