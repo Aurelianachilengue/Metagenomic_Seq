@@ -12,8 +12,6 @@ The key point of MetagenomeSeq package, is implementation of methods to account 
 
 The Data analyzed in this portfolio was obtained on `Bioconducter: MetagenomicSeq Package` on this [Page](http://www.bioconductor.org/packages/release/bioc/html/metagenomeSeq.html).
 
-The Data analyzed in this portfolio was obtained on `Bioconducter: MetagenomeSeq Package` in this [link](http://www.bioconductor.org/packages/release/bioc/html/metagenomeSeq.html).
-
 
 ```{r}
 library(metagenomeSeq)
