@@ -9,10 +9,6 @@ The key point of MetagenomeSeq package, is implementation of methods to account 
 ![Overview MetagenomeSeq](https://raw.githubusercontent.com/Aurelianachilengue/Metagenomic_Seq/main/MetagenomicSeq.PNG)
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e611a2c752b3c32880724548c04a106a56ac4738
 The Data analyzed in this portfolio was obtained on `Bioconducter: MetagenomicSeq Package` on this [Page](http://www.bioconductor.org/packages/release/bioc/html/metagenomeSeq.html).
 
 
@@ -39,7 +35,7 @@ biom_file <- system.file("extdata", "min_sparse_otu_table.biom", package = "biom
 b <- read_biom(biom_file)
 biom2MRexperiment(b)
 ```
-<<<<<<< HEAD
+
 Followed is an example of writing an MRexperiment object as a BIOM file, using a mouseData MRexperiment object to a BIOM file.
 
 ```{r}
@@ -111,6 +107,4 @@ obj
 There are two datasets included as examples in the metagenomeSeq package. Data needs to be in a MRexperiment object format to normalize, run statistical tests, and visualize
 
 * Human lung microbiome
-=======
 
->>>>>>> e611a2c752b3c32880724548c04a106a56ac4738
