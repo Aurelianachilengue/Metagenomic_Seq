@@ -376,7 +376,7 @@ summary {
 
 
 <div id="metagenomeseq" class="section level1">
-<h1><strong>MetagenomeSeq</strong></h1>
+<h1><strong>1.MetagenomeSeq</strong></h1>
 <p><em>Statistical analysis for sparse high-throughput sequencing</em></p>
 <p>Broadly speaking, metagenomics is the genetic analysis of microbial communities contained in natural living environments. The metagenomic studies, is focused on understanding the differences in microbial communities caused by phenotypic differences.</p>
 <p>The key point of MetagenomeSeq package, is implementation of methods to account for previously unaddressed biases specific to high-throughput sequencing microbial marker-gene survey data.</p>
@@ -386,10 +386,66 @@ summary {
 </div>
 <p>The Data analyzed in this portfolio was obtained on <code>Bioconducter: MetagenomicSeq Package</code> on this <a href="http://www.bioconductor.org/packages/release/bioc/html/metagenomeSeq.html">Page</a>.</p>
 <pre class="{r}"><code>library(metagenomeSeq)</code></pre>
-<pre class="{r}"><code>library(biomformat)
+</div>
+<div id="data-preparation" class="section level1">
+<h1>2.Data preparation</h1>
+<p>After the pre-processing of the microbial marker-gene sequence data, counts are defined by clustering reads according to read similarity. Given <em>m</em> features and <em>n</em> samples. The elements in a count matrix C (<em>m, n</em>), <em>cij</em>, are the number of reads annotated for a particular feature <em>i</em> (whether Operational Taxonomic Unit, species, genus, etc.) in sample <em>j</em>.</p>
+<p>The count data should be stored in a file with sample names along the first row and feature names along the first column. Then,the data is prepared and formatted as a <strong>MRexperiment</strong> object.</p>
+<ul>
+<li>BiomFormat</li>
+</ul>
+<p>Is a link that we can use to convert the data into <strong>MRexperiment</strong></p>
+<pre class="{r}"><code>#reading in a biom file
+library(biomformat)
 biom_file &lt;- system.file(&quot;extdata&quot;, &quot;min_sparse_otu_table.biom&quot;, package = &quot;biomformat&quot;)
 b &lt;- read_biom(biom_file)
 biom2MRexperiment(b)</code></pre>
+<p>Followed is an example of writing an MRexperiment object as a BIOM file, using a mouseData MRexperiment object to a BIOM file.</p>
+<pre class="{r}"><code>data(mouseData)
+# options include to normalize or not
+b &lt;- MRexperiment2biom(mouseData)
+</code></pre>
+<ul>
+<li>Loading count data</li>
+</ul>
+<p>After the pre-processing and annotation of sequencing data, metagenomeSeq requires a count matrix with features along rows and samples along the columns. metagenomeSeq includes functions for loading files of counts as loadMeta and phenodata loadPhenoData.</p>
+<p>Next we can see the example, a portion of the lung microbiome, were <code>Operational Taxonomic Unit</code> (OTU) matrix is provided in metagenomeSeq’s library ”extdata” folder. The OTU matrix is stored as a tab delimited file. loadMeta loads the taxa and counts into a list.</p>
+<pre class="{r}"><code>dataDirectory &lt;- system.file(&quot;extdata&quot;, package = &quot;metagenomeSeq&quot;)
+lung = loadMeta(file.path(dataDirectory, &quot;CHK_NAME.otus.count.csv&quot;))
+dim(lung$counts)
+</code></pre>
+<ul>
+<li>Loading taxonomy</li>
+</ul>
+<p>Next we can load annotated taxonomy and check to make sure that taxa annotations and OTUs are in the same order as your matrix rows.</p>
+<pre class="{r}"><code>taxa = read.delim(file.path(dataDirectory, &quot;CHK_otus.taxonomy.csv&quot;),
+stringsAsFactors = FALSE)</code></pre>
+<p>Now can add phenodata.</p>
+<ul>
+<li>Loading metadata</li>
+</ul>
+<p>This function loads the data as a list</p>
+<pre class="{r}"><code>clin = loadPhenoData(file.path(dataDirectory, &quot;CHK_clinical.csv&quot;),
+tran = TRUE)
+ord = match(colnames(lung$counts), rownames(clin))
+clin = clin[ord, ]
+head(clin[1:2, ])
+</code></pre>
+<ul>
+<li>Creating a MRexperiment object</li>
+</ul>
+<p>Function <code>newMRexperiment</code> takes a count matrix, phenoData (annotated data frame), and featureData (annotated data frame) as input. <code>Biobase</code> provides functions to create annotated data frames. Library sizes (depths of coverage) and normalization factors are also optional inputs.</p>
+<pre class="{r}"><code>phenotypeData = AnnotatedDataFrame(clin)
+phenotypeData
+</code></pre>
+<p>A feature annotated data frame</p>
+<pre class="{r}"><code>OTUdata = AnnotatedDataFrame(taxa)
+OTUdata</code></pre>
+<pre class="{r}"><code>obj = newMRexperiment(lung$counts,phenoData=phenotypeData,featureData=OTUdata)
+# Links to a paper providing further details can be included optionally.
+# experimentData(obj) = annotate::pmid2MIAME(&quot;21680950&quot;)
+obj
+</code></pre>
 </div>
 
 
